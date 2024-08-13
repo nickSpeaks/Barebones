@@ -16,12 +16,12 @@ public class Student {
 	
 	@Column(name = "last_name")
 	private String lastName;
-	
+	// add comment to trigger reload
 	@Column(name = "email")
 	private String email;
 	
 	public Student() {
-		
+		System.out.println("default constructor");
 	}
 	
 	public Student(String firstName, String lastName, String email) {
