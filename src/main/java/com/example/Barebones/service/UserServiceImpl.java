@@ -19,13 +19,35 @@ import com.example.Barebones.repo.UserRepository;
 @Service
 public class UserServiceImpl implements UserService {
 
-   @Autowired
+   //@Autowired
    private UserRepository userRepository;
 
-   @Autowired
+   //@Autowired
    private BCryptPasswordEncoder passwordEncoder;
 
-   public User findByEmail(String email){
+   /*
+   To convert your code from using field injection (where
+   dependencies are injected directly into fields using
+   @Autowired) to constructor injection (where dependencies
+   are passed as constructor parameters).
+
+   Steps Involved:
+
+  Remove @Autowired annotations: Remove the @Autowired
+  annotations from the fields in your UserServiceImpl class.
+  Create a constructor: Create a constructor in your UserServiceImpl
+  class that takes the required dependencies as parameters.
+  Assign dependencies: Within the constructor, assign the passed
+  parameters to the corresponding fields.
+    */
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder)
+    {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+
+    }
+
+    public User findByEmail(String email){
        return userRepository.findByEmail(email);
    }
 
