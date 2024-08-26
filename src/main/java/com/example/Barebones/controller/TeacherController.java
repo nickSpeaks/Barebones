@@ -20,8 +20,8 @@ public class TeacherController {
         this.teacherService = teacherService;
     }
 
-    // handler method to handle list students and return mode and view
-    @GetMapping("/students")
+    // handler method to handle list teachers and return mode and view
+    @GetMapping("/teachers")
     public String listTeachers(Model model) {
         System.out.println("IN TeacherController->listTeachers()");
         model.addAttribute("teachers", teacherService.getAllTeachers());
@@ -29,9 +29,9 @@ public class TeacherController {
     }
 
     @GetMapping("/teachers/new")
-    public String newTeacher(Model model) {
+    public String createTeacherForm(Model model) {
         System.out.println("IN TeacherController->newTeacherForm()");
-        // create student object to hold teacher form data
+        // create teacher object to hold teacher form data
         Teacher teacher = new Teacher();
         model.addAttribute("teacher", teacher);
         return "create_teacher";
@@ -45,7 +45,7 @@ public class TeacherController {
     }
 
     @GetMapping("/teachers/edit/{id}")
-    public String editTeacher(@PathVariable int id, Model model) {
+    public String editTeacherForm(@PathVariable Long id, Model model) {
         System.out.println("IN TeacherController->editTeacherForm()");
         model.addAttribute("teacher", teacherService.getTeacherById(id));
         return "edit_teacher";
@@ -68,7 +68,7 @@ public class TeacherController {
         return "redirect:/teachers";
     }
 
-    // handler method to handle delete student request
+    // handler method to handle delete teacher request
 
     @GetMapping("/teachers/{id}")
     public String deleteTeacher(@PathVariable Long id) {
